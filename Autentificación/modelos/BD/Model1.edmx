@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="UsuarioSet" EntityType="Model1.Store.UsuarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RequerimientosSet" EntityType="Model1.Store.RequerimientosSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DepartamentosSet" EntityType="Model1.Store.DepartamentosSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Estado_RequerimientoSet" EntityType="Model1.Store.Estado_RequerimientoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ComentarioSet" EntityType="Model1.Store.ComentarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tipo_de_requerimientoSet" EntityType="Model1.Store.tipo_de_requerimientoSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsuarioRequerimientos" Association="Model1.Store.UsuarioRequerimientos">
+      <End Role="Usuario" EntitySet="UsuarioSet" />
+      <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+    </AssociationSet>
+    <AssociationSet Name="RequerimientosDepartamentos" Association="Model1.Store.RequerimientosDepartamentos">
+      <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+      <End Role="Departamentos" EntitySet="DepartamentosSet" />
+    </AssociationSet>
+    <AssociationSet Name="RequerimientosComentario" Association="Model1.Store.RequerimientosComentario">
+      <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+      <End Role="Comentario" EntitySet="ComentarioSet" />
+    </AssociationSet>
+    <AssociationSet Name="RequerimientosEstado_Requerimiento" Association="Model1.Store.RequerimientosEstado_Requerimiento">
+      <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+      <End Role="Estado_Requerimiento" EntitySet="Estado_RequerimientoSet" />
+    </AssociationSet>
+    <AssociationSet Name="tipo_de_requerimientoRequerimientos" Association="Model1.Store.tipo_de_requerimientoRequerimientos">
+      <End Role="tipo_de_requerimiento" EntitySet="tipo_de_requerimientoSet" />
+      <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioDepartamentos" Association="Model1.Store.UsuarioDepartamentos">
+      <End Role="Usuario" EntitySet="UsuarioSet" />
+      <End Role="Departamentos" EntitySet="DepartamentosSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioEstado_Requerimiento" Association="Model1.Store.UsuarioEstado_Requerimiento">
+      <End Role="Usuario" EntitySet="UsuarioSet" />
+      <End Role="Estado_Requerimiento" EntitySet="Estado_RequerimientoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UsuarioSet">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rut_Usuario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cargo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contraseña" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rol" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequerimientosSet">
+    <Key>
+      <PropertyRef Name="Id_Requerimiento" />
+    </Key>
+    <Property Name="Id_Requerimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prioridad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Nivel_Complejidad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsuarioId_Usuario" Type="int" Nullable="false" />
+    <Property Name="Estado_RequerimientoId_Estado" Type="int" Nullable="false" />
+    <Property Name="tipo_de_requerimientoId_Tipo_Req" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DepartamentosSet">
+    <Key>
+      <PropertyRef Name="Id_Departamento" />
+    </Key>
+    <Property Name="Id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ubicacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Extension_Telefonica" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RequerimientosId_Requerimiento" Type="int" Nullable="false" />
+    <Property Name="Jefe_departamento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_RequerimientoSet">
+    <Key>
+      <PropertyRef Name="Id_Estado" />
+    </Key>
+    <Property Name="Id_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsuarioId_Usuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComentarioSet">
+    <Key>
+      <PropertyRef Name="Id_Observacion" />
+    </Key>
+    <Property Name="Id_Observacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Texto_Observacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RequerimientosId_Requerimiento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_de_requerimientoSet">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Req" />
+    </Key>
+    <Property Name="Id_Tipo_Req" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo_de_requerimientos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Requerimientos_Id_Requerimiento" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsuarioRequerimientos">
+    <End Role="Usuario" Type="Model1.Store.UsuarioSet" Multiplicity="1" />
+    <End Role="Requerimientos" Type="Model1.Store.RequerimientosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Requerimientos">
+        <PropertyRef Name="UsuarioId_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RequerimientosDepartamentos">
+    <End Role="Requerimientos" Type="Model1.Store.RequerimientosSet" Multiplicity="1" />
+    <End Role="Departamentos" Type="Model1.Store.DepartamentosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requerimientos">
+        <PropertyRef Name="Id_Requerimiento" />
+      </Principal>
+      <Dependent Role="Departamentos">
+        <PropertyRef Name="RequerimientosId_Requerimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RequerimientosComentario">
+    <End Role="Requerimientos" Type="Model1.Store.RequerimientosSet" Multiplicity="1" />
+    <End Role="Comentario" Type="Model1.Store.ComentarioSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requerimientos">
+        <PropertyRef Name="Id_Requerimiento" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="RequerimientosId_Requerimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RequerimientosEstado_Requerimiento">
+    <End Role="Requerimientos" Type="Model1.Store.RequerimientosSet" Multiplicity="*" />
+    <End Role="Estado_Requerimiento" Type="Model1.Store.Estado_RequerimientoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_Requerimiento">
+        <PropertyRef Name="Id_Estado" />
+      </Principal>
+      <Dependent Role="Requerimientos">
+        <PropertyRef Name="Estado_RequerimientoId_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tipo_de_requerimientoRequerimientos">
+    <End Role="tipo_de_requerimiento" Type="Model1.Store.tipo_de_requerimientoSet" Multiplicity="1" />
+    <End Role="Requerimientos" Type="Model1.Store.RequerimientosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_de_requerimiento">
+        <PropertyRef Name="Id_Tipo_Req" />
+      </Principal>
+      <Dependent Role="Requerimientos">
+        <PropertyRef Name="tipo_de_requerimientoId_Tipo_Req" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioDepartamentos">
+    <End Role="Usuario" Type="Model1.Store.UsuarioSet" Multiplicity="1" />
+    <End Role="Departamentos" Type="Model1.Store.DepartamentosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Departamentos">
+        <PropertyRef Name="Jefe_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioEstado_Requerimiento">
+    <End Role="Usuario" Type="Model1.Store.UsuarioSet" Multiplicity="1" />
+    <End Role="Estado_Requerimiento" Type="Model1.Store.Estado_RequerimientoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Estado_Requerimiento">
+        <PropertyRef Name="UsuarioId_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UsuarioSet" EntityType="Model1.Usuario" />
+          <EntitySet Name="RequerimientosSet" EntityType="Model1.Requerimientos" />
+          <EntitySet Name="DepartamentosSet" EntityType="Model1.Departamentos" />
+          <EntitySet Name="Estado_RequerimientoSet" EntityType="Model1.Estado_Requerimiento" />
+          <AssociationSet Name="UsuarioRequerimientos" Association="Model1.UsuarioRequerimientos">
+            <End Role="Usuario" EntitySet="UsuarioSet" />
+            <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+          </AssociationSet>
+          <AssociationSet Name="RequerimientosDepartamentos" Association="Model1.RequerimientosDepartamentos">
+            <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+            <End Role="Departamentos" EntitySet="DepartamentosSet" />
+          </AssociationSet>
+          <EntitySet Name="ComentarioSet" EntityType="Model1.Comentario" />
+          <EntitySet Name="tipo_de_requerimientoSet" EntityType="Model1.tipo_de_requerimiento" />
+          <AssociationSet Name="RequerimientosComentario" Association="Model1.RequerimientosComentario">
+            <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+            <End Role="Comentario" EntitySet="ComentarioSet" />
+          </AssociationSet>
+          <AssociationSet Name="RequerimientosEstado_Requerimiento" Association="Model1.RequerimientosEstado_Requerimiento">
+            <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+            <End Role="Estado_Requerimiento" EntitySet="Estado_RequerimientoSet" />
+          </AssociationSet>
+          <AssociationSet Name="tipo_de_requerimientoRequerimientos" Association="Model1.tipo_de_requerimientoRequerimientos">
+            <End Role="tipo_de_requerimiento" EntitySet="tipo_de_requerimientoSet" />
+            <End Role="Requerimientos" EntitySet="RequerimientosSet" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioDepartamentos" Association="Model1.UsuarioDepartamentos">
+            <End Role="Usuario" EntitySet="UsuarioSet" />
+            <End Role="Departamentos" EntitySet="DepartamentosSet" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioEstado_Requerimiento" Association="Model1.UsuarioEstado_Requerimiento">
+            <End Role="Usuario" EntitySet="UsuarioSet" />
+            <End Role="Estado_Requerimiento" EntitySet="Estado_RequerimientoSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rut_Usuario" Type="String" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" />
+          <Property Name="Cargo" Type="String" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" />
+          <Property Name="Contraseña" Type="String" Nullable="false" />
+          <Property Name="Rol" Type="String" Nullable="false" />
+          <NavigationProperty Name="Requerimientos" Relationship="Model1.UsuarioRequerimientos" FromRole="Usuario" ToRole="Requerimientos" />
+          <NavigationProperty Name="Departamentos" Relationship="Model1.UsuarioDepartamentos" FromRole="Usuario" ToRole="Departamentos" />
+          <NavigationProperty Name="Estado_Requerimiento" Relationship="Model1.UsuarioEstado_Requerimiento" FromRole="Usuario" ToRole="Estado_Requerimiento" />
+        </EntityType>
+        <EntityType Name="Requerimientos">
+          <Key>
+            <PropertyRef Name="Id_Requerimiento" />
+          </Key>
+          <Property Name="Id_Requerimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" />
+          <Property Name="Prioridad" Type="String" Nullable="false" />
+          <Property Name="Nivel_Complejidad" Type="String" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Model1.UsuarioRequerimientos" FromRole="Requerimientos" ToRole="Usuario" />
+          <Property Name="UsuarioId_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamentos" Relationship="Model1.RequerimientosDepartamentos" FromRole="Requerimientos" ToRole="Departamentos" />
+          <NavigationProperty Name="Comentario" Relationship="Model1.RequerimientosComentario" FromRole="Requerimientos" ToRole="Comentario" />
+          <NavigationProperty Name="Estado_Requerimiento" Relationship="Model1.RequerimientosEstado_Requerimiento" FromRole="Requerimientos" ToRole="Estado_Requerimiento" />
+          <Property Name="Estado_RequerimientoId_Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo_de_requerimiento" Relationship="Model1.tipo_de_requerimientoRequerimientos" FromRole="Requerimientos" ToRole="tipo_de_requerimiento" />
+          <Property Name="tipo_de_requerimientoId_Tipo_Req" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" />
+          <Property Name="Extension_Telefonica" Type="String" Nullable="false" />
+          <NavigationProperty Name="Requerimientos" Relationship="Model1.RequerimientosDepartamentos" FromRole="Departamentos" ToRole="Requerimientos" />
+          <Property Name="RequerimientosId_Requerimiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Model1.UsuarioDepartamentos" FromRole="Departamentos" ToRole="Usuario" />
+          <Property Name="Jefe_departamento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado_Requerimiento">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Requerimientos" Relationship="Model1.RequerimientosEstado_Requerimiento" FromRole="Estado_Requerimiento" ToRole="Requerimientos" />
+          <NavigationProperty Name="Usuario" Relationship="Model1.UsuarioEstado_Requerimiento" FromRole="Estado_Requerimiento" ToRole="Usuario" />
+          <Property Name="UsuarioId_Usuario" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UsuarioRequerimientos">
+          <End Type="Model1.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Model1.Requerimientos" Role="Requerimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id_Usuario" />
+            </Principal>
+            <Dependent Role="Requerimientos">
+              <PropertyRef Name="UsuarioId_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RequerimientosDepartamentos">
+          <End Type="Model1.Requerimientos" Role="Requerimientos" Multiplicity="1" />
+          <End Type="Model1.Departamentos" Role="Departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimientos">
+              <PropertyRef Name="Id_Requerimiento" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="RequerimientosId_Requerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comentario">
+          <Key>
+            <PropertyRef Name="Id_Observacion" />
+          </Key>
+          <Property Name="Id_Observacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Texto_Observacion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Requerimientos" Relationship="Model1.RequerimientosComentario" FromRole="Comentario" ToRole="Requerimientos" />
+          <Property Name="RequerimientosId_Requerimiento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_de_requerimiento">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Req" />
+          </Key>
+          <Property Name="Id_Tipo_Req" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo_de_requerimientos" Type="String" Nullable="false" />
+          <Property Name="Requerimientos_Id_Requerimiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Requerimientos" Relationship="Model1.tipo_de_requerimientoRequerimientos" FromRole="tipo_de_requerimiento" ToRole="Requerimientos" />
+        </EntityType>
+        <Association Name="RequerimientosComentario">
+          <End Type="Model1.Requerimientos" Role="Requerimientos" Multiplicity="1" />
+          <End Type="Model1.Comentario" Role="Comentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimientos">
+              <PropertyRef Name="Id_Requerimiento" />
+            </Principal>
+            <Dependent Role="Comentario">
+              <PropertyRef Name="RequerimientosId_Requerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RequerimientosEstado_Requerimiento">
+          <End Type="Model1.Requerimientos" Role="Requerimientos" Multiplicity="*" />
+          <End Type="Model1.Estado_Requerimiento" Role="Estado_Requerimiento" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Requerimiento">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Requerimientos">
+              <PropertyRef Name="Estado_RequerimientoId_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tipo_de_requerimientoRequerimientos">
+          <End Type="Model1.tipo_de_requerimiento" Role="tipo_de_requerimiento" Multiplicity="1" />
+          <End Type="Model1.Requerimientos" Role="Requerimientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_de_requerimiento">
+              <PropertyRef Name="Id_Tipo_Req" />
+            </Principal>
+            <Dependent Role="Requerimientos">
+              <PropertyRef Name="tipo_de_requerimientoId_Tipo_Req" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioDepartamentos">
+          <End Type="Model1.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Model1.Departamentos" Role="Departamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id_Usuario" />
+            </Principal>
+            <Dependent Role="Departamentos">
+              <PropertyRef Name="Jefe_departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioEstado_Requerimiento">
+          <End Type="Model1.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Model1.Estado_Requerimiento" Role="Estado_Requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id_Usuario" />
+            </Principal>
+            <Dependent Role="Estado_Requerimiento">
+              <PropertyRef Name="UsuarioId_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="UsuarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Usuario)">
+        <MappingFragment StoreEntitySet="UsuarioSet">
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Rut_Usuario" ColumnName="Rut_Usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequerimientosSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Requerimientos)">
+        <MappingFragment StoreEntitySet="RequerimientosSet">
+          <ScalarProperty Name="Id_Requerimiento" ColumnName="Id_Requerimiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Nivel_Complejidad" ColumnName="Nivel_Complejidad" />
+          <ScalarProperty Name="UsuarioId_Usuario" ColumnName="UsuarioId_Usuario" />
+          <ScalarProperty Name="Estado_RequerimientoId_Estado" ColumnName="Estado_RequerimientoId_Estado" />
+          <ScalarProperty Name="tipo_de_requerimientoId_Tipo_Req" ColumnName="tipo_de_requerimientoId_Tipo_Req" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartamentosSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Departamentos)">
+        <MappingFragment StoreEntitySet="DepartamentosSet">
+          <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="Extension_Telefonica" ColumnName="Extension_Telefonica" />
+          <ScalarProperty Name="RequerimientosId_Requerimiento" ColumnName="RequerimientosId_Requerimiento" />
+          <ScalarProperty Name="Jefe_departamento" ColumnName="Jefe_departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado_RequerimientoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Estado_Requerimiento)">
+        <MappingFragment StoreEntitySet="Estado_RequerimientoSet">
+          <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="UsuarioId_Usuario" ColumnName="UsuarioId_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComentarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Comentario)">
+        <MappingFragment StoreEntitySet="ComentarioSet">
+          <ScalarProperty Name="Id_Observacion" ColumnName="Id_Observacion" />
+          <ScalarProperty Name="Texto_Observacion" ColumnName="Texto_Observacion" />
+          <ScalarProperty Name="RequerimientosId_Requerimiento" ColumnName="RequerimientosId_Requerimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_de_requerimientoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.tipo_de_requerimiento)">
+        <MappingFragment StoreEntitySet="tipo_de_requerimientoSet">
+          <ScalarProperty Name="Id_Tipo_Req" ColumnName="Id_Tipo_Req" />
+          <ScalarProperty Name="Titulo_de_requerimientos" ColumnName="Titulo_de_requerimientos" />
+          <ScalarProperty Name="Requerimientos_Id_Requerimiento" ColumnName="Requerimientos_Id_Requerimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

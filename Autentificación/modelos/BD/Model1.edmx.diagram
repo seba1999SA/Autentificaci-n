@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ab1e0111eac4c37860c6896a3654984" Name="Diagram1" ZoomLevel="88" >
+        <EntityTypeShape EntityType="Model1.Usuario" Width="1.875" PointX="10.625" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Requerimientos" Width="2.75" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Departamentos" Width="2.125" PointX="1.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Estado_Requerimiento" Width="2.625" PointX="8.875" PointY="4.375" />
+        <AssociationConnector Association="Model1.UsuarioRequerimientos" />
+        <AssociationConnector Association="Model1.RequerimientosDepartamentos" />
+        <EntityTypeShape EntityType="Model1.Comentario" Width="2.625" PointX="1.5" PointY="4" />
+        <EntityTypeShape EntityType="Model1.tipo_de_requerimiento" Width="2.5" PointX="5.5" PointY="4.625" />
+        <AssociationConnector Association="Model1.RequerimientosComentario" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.RequerimientosEstado_Requerimiento" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.tipo_de_requerimientoRequerimientos" />
+        <AssociationConnector Association="Model1.UsuarioDepartamentos" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Model1.UsuarioEstado_Requerimiento" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
