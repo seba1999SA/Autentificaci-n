@@ -12,8 +12,11 @@ namespace Autentificación
 {
     public partial class Login : Form
     {
-        //estamos creando un objeto de tipo Autentificasionb desde la clase Autentificasion
+        Form1 form1 = new Form1();
+
+        //estamos creando un objeto de tipo Autentificacasion desde la clase Autentificasion
         controladores.Autenticacion Auth =  new controladores.Autenticacion();
+
         public Login()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace Autentificación
 
         private void Login_Load(object sender, EventArgs e)
         {
+            //hacemos que los caracteres del textbox de la contraseña se vean solo "*"
+            txt_clave.UseSystemPasswordChar = true;
 
         }
 
@@ -30,9 +35,17 @@ namespace Autentificación
             string correo = txt_correo.Text;
             string clave = txt_clave.Text;
 
-           Auth.AutentificasionDeUsuario(correo, clave);
-
-            
+            //Comparamos si la respuesta del controlador valida el login o no
+            if(Auth.AutentificasionDeUsuario(correo, clave) == true)
+            {
+                MessageBox.Show("Iniciste sesión");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cuenta no valida");
+            }
         }
+
     }
 }

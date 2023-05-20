@@ -1,6 +1,6 @@
 ﻿namespace Autentificación
 {
-    partial class Form1
+    partial class FormMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelChildForm = new System.Windows.Forms.Panel();
+            this.Logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // panelChildForm
+            // Logout
             // 
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(0, 0);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(784, 461);
-            this.panelChildForm.TabIndex = 0;
-            this.panelChildForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Logout.Location = new System.Drawing.Point(12, 415);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(75, 23);
+            this.Logout.TabIndex = 0;
+            this.Logout.Text = "Logout";
+            this.Logout.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.panelChildForm);
-            this.MinimumSize = new System.Drawing.Size(580, 400);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Logout);
+            this.Name = "FormMenu";
+            this.Text = "FormMenu";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelChildForm;
+        private System.Windows.Forms.Button Logout;
     }
 }
