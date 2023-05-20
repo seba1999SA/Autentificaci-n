@@ -10,19 +10,15 @@ using System.Windows.Forms;
 
 namespace Autentificación
 {
-    public partial class panelpadre : Form
+    public partial class Form1 : Form
     {
-        public panelpadre()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            //openPanelForm(new Form2());
-            Form uwu = new loqin();
-            openPanelForm(uwu);
-            int hola = uwu.Text();
 
         }
 
@@ -33,16 +29,17 @@ namespace Autentificación
             activeForm?.Close();
             activeForm = FormHijo;
             FormHijo.TopLevel = false;
+            //FormHijo.Dock = DockStyle.Fill;
             panelChildForm.Controls.Add(FormHijo);
             FormHijo.Show();
         }
         #endregion
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Application.Exit();
+            //aqui llamamos al from2 que tiene el nombre de login 
+            openPanelForm(new Login());
+
         }
-
-
     }
 }
