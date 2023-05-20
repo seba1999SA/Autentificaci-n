@@ -50,7 +50,7 @@ namespace Autentificación.controladores
 
         private void uwu()
         {
-            using (Model1Container db = new Model1Container())
+            using (Model1Container bd = new Model1Container())
             {
                 
             }

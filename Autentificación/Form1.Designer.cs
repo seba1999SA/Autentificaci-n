@@ -1,16 +1,16 @@
 ﻿namespace Autentificación
 {
-    partial class panelpadre
+    partial class Form1
     {
         /// <summary>
-        /// Variable del diseñador necesaria.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Limpiar los recursos que se estén usando.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de Windows Forms
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -33,21 +33,19 @@
             // 
             // panelChildForm
             // 
-            this.panelChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(0, 0);
+            this.panelChildForm.Location = new System.Drawing.Point(2, 1);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(800, 450);
+            this.panelChildForm.Size = new System.Drawing.Size(786, 443);
             this.panelChildForm.TabIndex = 0;
             this.panelChildForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panelpadre
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelChildForm);
-            this.Name = "panelpadre";
+            this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -59,4 +57,3 @@
         private System.Windows.Forms.Panel panelChildForm;
     }
 }
-
