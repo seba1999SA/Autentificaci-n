@@ -8,7 +8,6 @@ namespace Autentificación.modelos.ViewModels
 {
     public class UsuarioModel
     {
-
         public int ID_Usuario { get; set; }
         public string Rut_Usuario { get; set; }
         public string Nombre { get; set; }

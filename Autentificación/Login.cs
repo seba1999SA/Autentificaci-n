@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using controladores;
 
 namespace Autentificación
 {
     public partial class Login : Form
     {
-        Form1 form1 = new Form1();
+        //Form1 form1 = new Form1();
 
         //estamos creando un objeto de tipo Autentificacasion desde la clase Autentificasion
-        controladores.Autenticacion Auth =  new controladores.Autenticacion();
+        Autenticacion Auth =  new Autenticacion();
 
         public Login()
         {
@@ -39,7 +40,12 @@ namespace Autentificación
             if(Auth.AutentificasionDeUsuario(correo, clave) == true)
             {
                 MessageBox.Show("Iniciste sesión");
-                this.Close();
+                var Menu = new FormMenu
+                {
+                    MinimizeBox = false
+                };
+                Menu.ShowDialog();
+
             }
             else
             {

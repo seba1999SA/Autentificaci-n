@@ -52,7 +52,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(130, 143);
+            this.label2.Location = new System.Drawing.Point(125, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 24);
             this.label2.TabIndex = 1;
@@ -63,7 +63,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(130, 200);
+            this.label3.Location = new System.Drawing.Point(125, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 24);
             this.label3.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.btn_ingresar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_ingresar.BackColor = System.Drawing.Color.Pink;
             this.btn_ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ingresar.Location = new System.Drawing.Point(211, 273);
+            this.btn_ingresar.Location = new System.Drawing.Point(206, 246);
             this.btn_ingresar.Name = "btn_ingresar";
             this.btn_ingresar.Size = new System.Drawing.Size(159, 75);
             this.btn_ingresar.TabIndex = 3;
@@ -85,7 +85,7 @@
             // txt_correo
             // 
             this.txt_correo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_correo.Location = new System.Drawing.Point(275, 148);
+            this.txt_correo.Location = new System.Drawing.Point(270, 121);
             this.txt_correo.Name = "txt_correo";
             this.txt_correo.Size = new System.Drawing.Size(180, 20);
             this.txt_correo.TabIndex = 4;
@@ -93,7 +93,7 @@
             // txt_clave
             // 
             this.txt_clave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_clave.Location = new System.Drawing.Point(275, 205);
+            this.txt_clave.Location = new System.Drawing.Point(270, 178);
             this.txt_clave.Name = "txt_clave";
             this.txt_clave.Size = new System.Drawing.Size(180, 20);
             this.txt_clave.TabIndex = 5;

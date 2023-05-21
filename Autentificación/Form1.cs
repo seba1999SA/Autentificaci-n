@@ -21,7 +21,7 @@ namespace Autentificación
         {
             //aqui llamamos al from2 que tiene el nombre de login 
             Form login = new Login();
-            Form Menu = new FormMenu();
+            //Form Menu = new FormMenu();
 
             openPanelForm(login);
             
