@@ -34,8 +34,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cb_TipoReq = new System.Windows.Forms.ComboBox();
+            this.cb_Prioridad = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -104,24 +104,27 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "Eliminar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox1
+            // cb_TipoReq
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(222, 60);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cb_TipoReq.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cb_TipoReq.FormattingEnabled = true;
+            this.cb_TipoReq.Location = new System.Drawing.Point(222, 60);
+            this.cb_TipoReq.Name = "cb_TipoReq";
+            this.cb_TipoReq.Size = new System.Drawing.Size(198, 21);
+            this.cb_TipoReq.TabIndex = 6;
+            this.cb_TipoReq.Text = "Indique el tipo del requerimiento";
             // 
-            // comboBox2
+            // cb_Prioridad
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(222, 103);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(198, 21);
-            this.comboBox2.TabIndex = 7;
+            this.cb_Prioridad.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cb_Prioridad.FormattingEnabled = true;
+            this.cb_Prioridad.Location = new System.Drawing.Point(222, 103);
+            this.cb_Prioridad.Name = "cb_Prioridad";
+            this.cb_Prioridad.Size = new System.Drawing.Size(198, 21);
+            this.cb_Prioridad.TabIndex = 7;
+            this.cb_Prioridad.Text = "Indique la prioridad del requerimiento";
             // 
             // button3
             // 
@@ -143,6 +146,7 @@
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Pendientes";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -154,6 +158,7 @@
             this.checkBox2.TabIndex = 10;
             this.checkBox2.Text = "Resueltos";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // ListReq
             // 
@@ -163,8 +168,8 @@
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cb_Prioridad);
+            this.Controls.Add(this.cb_TipoReq);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -190,8 +195,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cb_TipoReq;
+        private System.Windows.Forms.ComboBox cb_Prioridad;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;

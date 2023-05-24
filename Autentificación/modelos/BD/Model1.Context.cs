@@ -27,9 +27,8 @@ namespace Autentificación.modelos.BD
     
         public virtual DbSet<Usuario> UsuarioSet { get; set; }
         public virtual DbSet<Requerimientos> RequerimientosSet { get; set; }
-        public virtual DbSet<Departamentos> DepartamentosSet { get; set; }
         public virtual DbSet<Estado_Requerimiento> Estado_RequerimientoSet { get; set; }
-        public virtual DbSet<Comentario> ComentarioSet { get; set; }
         public virtual DbSet<tipo_de_requerimiento> tipo_de_requerimientoSet { get; set; }
+        //public virtual DbSet<Rol> RolSet { get; set; }
     }
 }

@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Autentificación.controladores
+namespace controladores
 {
-    public class ControlLstRque
+    public class ControlLstReq
     {
         //public List<UsuarioModel> lstreq()
         //{

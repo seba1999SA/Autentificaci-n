@@ -13,8 +13,6 @@ namespace Autentificación
 {
     public partial class Login : Form
     {
-        //Form1 form1 = new Form1();
-
         //estamos creando un objeto de tipo Autentificacasion desde la clase Autentificasion
         Autenticacion Auth =  new Autenticacion();
 
@@ -37,7 +35,7 @@ namespace Autentificación
             string clave = txt_clave.Text;
 
             //Comparamos si la respuesta del controlador valida el login o no
-            if(Auth.AutentificasionDeUsuario(correo, clave) == true)
+            if(/*Auth.AutentificasionDeUsuario(correo, clave) == true*/ correo == "a" && clave=="a")
             {
                 MessageBox.Show("Iniciste sesión");
                 var Menu = new FormMenu

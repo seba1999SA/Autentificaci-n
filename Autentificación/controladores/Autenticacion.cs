@@ -12,10 +12,10 @@ namespace controladores
 {
     public class Autenticacion
     {
-        //linea de conecsion para vase de datos //
-        string ConnectionString = "Data Source = (local); Initial Catalog = trabajo_nacional; Integrated Security = True";
-        
-        public bool AutentificasionDeUsuario(string Usuario,string Contrasena)
+        //falta insertar base de datos y definir el tu servidor
+        string ConnectionString = "Data Source = (local); Initial Catalog = <Base de datos>; Integrated Security = True";
+
+        public bool AutentificasionDeUsuario(string Usuario, string Contrasena)
         {
             string query = "SELECT COUNT(*) FROM UsuarioSet WHERE CorreoElectronico = @Usuario AND Contraseña = @Contrasena";
             using (SqlConnection connection = new SqlConnection(ConnectionString))

@@ -18,7 +18,6 @@ namespace Autentificación.modelos.BD
         public Usuario()
         {
             this.Requerimientos = new HashSet<Requerimientos>();
-            this.Departamentos = new HashSet<Departamentos>();
             this.Estado_Requerimiento = new HashSet<Estado_Requerimiento>();
         }
     
@@ -34,8 +33,7 @@ namespace Autentificación.modelos.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Requerimientos> Requerimientos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Departamentos> Departamentos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
         public virtual ICollection<Estado_Requerimiento> Estado_Requerimiento { get; set; }
     }
 }

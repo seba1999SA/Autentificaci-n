@@ -59,7 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controladores\Autenticacion.cs" />
-    <Compile Include="controladores\ControlLstRque.cs" />
+    <Compile Include="controladores\ControlAgregarRequerimiento.cs" />
+    <Compile Include="controladores\ControlLstReq.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,12 +84,6 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="modelos\BD\Comentario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modelos\BD\Departamentos.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="modelos\BD\Estado_Requerimiento.cs">
       <DependentUpon>Model1.tt</DependentUpon>

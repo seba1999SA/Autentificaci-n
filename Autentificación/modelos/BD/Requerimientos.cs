@@ -17,8 +17,7 @@ namespace Autentificación.modelos.BD
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Requerimientos()
         {
-            this.Departamentos = new HashSet<Departamentos>();
-            this.Comentario = new HashSet<Comentario>();
+
         }
     
         public int Id_Requerimiento { get; set; }
@@ -31,9 +30,6 @@ namespace Autentificación.modelos.BD
     
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Departamentos> Departamentos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comentario> Comentario { get; set; }
         public virtual Estado_Requerimiento Estado_Requerimiento { get; set; }
         public virtual tipo_de_requerimiento tipo_de_requerimiento { get; set; }
     }

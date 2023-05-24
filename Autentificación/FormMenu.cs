@@ -18,6 +18,7 @@ namespace Autentificación
         }
         private void FormMenu_Load(object sender, EventArgs e)
         {
+            
         }
 
         #region Función Desplegar Formulario en Panel Hijo

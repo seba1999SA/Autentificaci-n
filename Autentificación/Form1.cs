@@ -19,12 +19,9 @@ namespace Autentificación
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //aqui llamamos al from2 que tiene el nombre de login 
             Form login = new Login();
-            //Form Menu = new FormMenu();
 
             openPanelForm(login);
-            
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

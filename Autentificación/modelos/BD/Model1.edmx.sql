@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/18/2023 00:18:43
--- Generated from EDMX file: C:\Users\sebas\source\repos\Autentificación\Autentificación\modelos\BD\Model1.edmx
+-- Date Created: 05/24/2023 12:41:04
+-- Generated from EDMX file: C:\Users\jpgod\source\repos\Autentificaci-n\Autentificación\modelos\BD\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,35 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_UsuarioRequerimientos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_UsuarioRequerimientos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RequerimientosEstado_Requerimiento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_RequerimientosEstado_Requerimiento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_tipo_de_requerimientoRequerimientos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_tipo_de_requerimientoRequerimientos];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UsuarioEstado_Requerimiento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Estado_RequerimientoSet] DROP CONSTRAINT [FK_UsuarioEstado_Requerimiento];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[UsuarioSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsuarioSet];
+GO
+IF OBJECT_ID(N'[dbo].[RequerimientosSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RequerimientosSet];
+GO
+IF OBJECT_ID(N'[dbo].[Estado_RequerimientoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Estado_RequerimientoSet];
+GO
+IF OBJECT_ID(N'[dbo].[tipo_de_requerimientoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tipo_de_requerimientoSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -32,11 +56,9 @@ CREATE TABLE [dbo].[UsuarioSet] (
     [Id_Usuario] int IDENTITY(1,1) NOT NULL,
     [Rut_Usuario] nvarchar(max)  NOT NULL,
     [Nombre] nvarchar(max)  NOT NULL,
-    [Apellido] nvarchar(max)  NOT NULL,
-    [Cargo] nvarchar(max)  NOT NULL,
     [CorreoElectronico] nvarchar(max)  NOT NULL,
     [Contraseña] nvarchar(max)  NOT NULL,
-    [Rol] nvarchar(max)  NOT NULL
+    [RolID] int  NOT NULL
 );
 GO
 
@@ -46,37 +68,16 @@ CREATE TABLE [dbo].[RequerimientosSet] (
     [Descripcion] nvarchar(max)  NOT NULL,
     [Prioridad] nvarchar(max)  NOT NULL,
     [Nivel_Complejidad] nvarchar(max)  NOT NULL,
-    [UsuarioId_Usuario] int  NOT NULL,
     [Estado_RequerimientoId_Estado] int  NOT NULL,
-    [tipo_de_requerimientoId_Tipo_Req] int  NOT NULL
-);
-GO
-
--- Creating table 'DepartamentosSet'
-CREATE TABLE [dbo].[DepartamentosSet] (
-    [Id_Departamento] int IDENTITY(1,1) NOT NULL,
-    [Nombre] nvarchar(max)  NOT NULL,
-    [Descripcion] nvarchar(max)  NOT NULL,
-    [Ubicacion] nvarchar(max)  NOT NULL,
-    [Extension_Telefonica] nvarchar(max)  NOT NULL,
-    [RequerimientosId_Requerimiento] int  NOT NULL,
-    [Jefe_departamento] int  NOT NULL
+    [tipo_de_requerimientoId_Tipo_Req] int  NOT NULL,
+    [RolID] int  NOT NULL
 );
 GO
 
 -- Creating table 'Estado_RequerimientoSet'
 CREATE TABLE [dbo].[Estado_RequerimientoSet] (
     [Id_Estado] int IDENTITY(1,1) NOT NULL,
-    [Descripcion] nvarchar(max)  NOT NULL,
-    [UsuarioId_Usuario] int  NOT NULL
-);
-GO
-
--- Creating table 'ComentarioSet'
-CREATE TABLE [dbo].[ComentarioSet] (
-    [Id_Observacion] int IDENTITY(1,1) NOT NULL,
-    [Texto_Observacion] nvarchar(max)  NOT NULL,
-    [RequerimientosId_Requerimiento] int  NOT NULL
+    [Descripcion] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -85,6 +86,13 @@ CREATE TABLE [dbo].[tipo_de_requerimientoSet] (
     [Id_Tipo_Req] int IDENTITY(1,1) NOT NULL,
     [Titulo_de_requerimientos] nvarchar(max)  NOT NULL,
     [Requerimientos_Id_Requerimiento] int  NOT NULL
+);
+GO
+
+-- Creating table 'RolSet'
+CREATE TABLE [dbo].[RolSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Nombre_Rol] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -104,22 +112,10 @@ ADD CONSTRAINT [PK_RequerimientosSet]
     PRIMARY KEY CLUSTERED ([Id_Requerimiento] ASC);
 GO
 
--- Creating primary key on [Id_Departamento] in table 'DepartamentosSet'
-ALTER TABLE [dbo].[DepartamentosSet]
-ADD CONSTRAINT [PK_DepartamentosSet]
-    PRIMARY KEY CLUSTERED ([Id_Departamento] ASC);
-GO
-
 -- Creating primary key on [Id_Estado] in table 'Estado_RequerimientoSet'
 ALTER TABLE [dbo].[Estado_RequerimientoSet]
 ADD CONSTRAINT [PK_Estado_RequerimientoSet]
     PRIMARY KEY CLUSTERED ([Id_Estado] ASC);
-GO
-
--- Creating primary key on [Id_Observacion] in table 'ComentarioSet'
-ALTER TABLE [dbo].[ComentarioSet]
-ADD CONSTRAINT [PK_ComentarioSet]
-    PRIMARY KEY CLUSTERED ([Id_Observacion] ASC);
 GO
 
 -- Creating primary key on [Id_Tipo_Req] in table 'tipo_de_requerimientoSet'
@@ -128,54 +124,15 @@ ADD CONSTRAINT [PK_tipo_de_requerimientoSet]
     PRIMARY KEY CLUSTERED ([Id_Tipo_Req] ASC);
 GO
 
+-- Creating primary key on [ID] in table 'RolSet'
+ALTER TABLE [dbo].[RolSet]
+ADD CONSTRAINT [PK_RolSet]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [UsuarioId_Usuario] in table 'RequerimientosSet'
-ALTER TABLE [dbo].[RequerimientosSet]
-ADD CONSTRAINT [FK_UsuarioRequerimientos]
-    FOREIGN KEY ([UsuarioId_Usuario])
-    REFERENCES [dbo].[UsuarioSet]
-        ([Id_Usuario])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UsuarioRequerimientos'
-CREATE INDEX [IX_FK_UsuarioRequerimientos]
-ON [dbo].[RequerimientosSet]
-    ([UsuarioId_Usuario]);
-GO
-
--- Creating foreign key on [RequerimientosId_Requerimiento] in table 'DepartamentosSet'
-ALTER TABLE [dbo].[DepartamentosSet]
-ADD CONSTRAINT [FK_RequerimientosDepartamentos]
-    FOREIGN KEY ([RequerimientosId_Requerimiento])
-    REFERENCES [dbo].[RequerimientosSet]
-        ([Id_Requerimiento])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RequerimientosDepartamentos'
-CREATE INDEX [IX_FK_RequerimientosDepartamentos]
-ON [dbo].[DepartamentosSet]
-    ([RequerimientosId_Requerimiento]);
-GO
-
--- Creating foreign key on [RequerimientosId_Requerimiento] in table 'ComentarioSet'
-ALTER TABLE [dbo].[ComentarioSet]
-ADD CONSTRAINT [FK_RequerimientosComentario]
-    FOREIGN KEY ([RequerimientosId_Requerimiento])
-    REFERENCES [dbo].[RequerimientosSet]
-        ([Id_Requerimiento])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RequerimientosComentario'
-CREATE INDEX [IX_FK_RequerimientosComentario]
-ON [dbo].[ComentarioSet]
-    ([RequerimientosId_Requerimiento]);
-GO
 
 -- Creating foreign key on [Estado_RequerimientoId_Estado] in table 'RequerimientosSet'
 ALTER TABLE [dbo].[RequerimientosSet]
@@ -207,34 +164,34 @@ ON [dbo].[RequerimientosSet]
     ([tipo_de_requerimientoId_Tipo_Req]);
 GO
 
--- Creating foreign key on [Jefe_departamento] in table 'DepartamentosSet'
-ALTER TABLE [dbo].[DepartamentosSet]
-ADD CONSTRAINT [FK_UsuarioDepartamentos]
-    FOREIGN KEY ([Jefe_departamento])
-    REFERENCES [dbo].[UsuarioSet]
-        ([Id_Usuario])
+-- Creating foreign key on [RolID] in table 'UsuarioSet'
+ALTER TABLE [dbo].[UsuarioSet]
+ADD CONSTRAINT [FK_RolUsuario]
+    FOREIGN KEY ([RolID])
+    REFERENCES [dbo].[RolSet]
+        ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_UsuarioDepartamentos'
-CREATE INDEX [IX_FK_UsuarioDepartamentos]
-ON [dbo].[DepartamentosSet]
-    ([Jefe_departamento]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_RolUsuario'
+CREATE INDEX [IX_FK_RolUsuario]
+ON [dbo].[UsuarioSet]
+    ([RolID]);
 GO
 
--- Creating foreign key on [UsuarioId_Usuario] in table 'Estado_RequerimientoSet'
-ALTER TABLE [dbo].[Estado_RequerimientoSet]
-ADD CONSTRAINT [FK_UsuarioEstado_Requerimiento]
-    FOREIGN KEY ([UsuarioId_Usuario])
-    REFERENCES [dbo].[UsuarioSet]
-        ([Id_Usuario])
+-- Creating foreign key on [RolID] in table 'RequerimientosSet'
+ALTER TABLE [dbo].[RequerimientosSet]
+ADD CONSTRAINT [FK_RolRequerimientos]
+    FOREIGN KEY ([RolID])
+    REFERENCES [dbo].[RolSet]
+        ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_UsuarioEstado_Requerimiento'
-CREATE INDEX [IX_FK_UsuarioEstado_Requerimiento]
-ON [dbo].[Estado_RequerimientoSet]
-    ([UsuarioId_Usuario]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_RolRequerimientos'
+CREATE INDEX [IX_FK_RolRequerimientos]
+ON [dbo].[RequerimientosSet]
+    ([RolID]);
 GO
 
 -- --------------------------------------------------
