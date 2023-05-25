@@ -35,7 +35,7 @@ namespace Autentificación
             string clave = txt_clave.Text;
 
             //Comparamos si la respuesta del controlador valida el login o no
-            if(/*Auth.AutentificasionDeUsuario(correo, clave) == true*/ correo == "a" && clave=="a")
+            if(Auth.AutentificasionDeUsuario(correo, clave) == true)
             {
                 MessageBox.Show("Iniciste sesión");
                 var Menu = new FormMenu

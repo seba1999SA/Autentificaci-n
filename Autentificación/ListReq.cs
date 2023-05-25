@@ -13,7 +13,8 @@ namespace Autentificación
 {
     public partial class ListReq : Form
     {
-        ControlLstReq lstreq = new ControlLstReq();
+        LlenarComboBox LstReq = new LlenarComboBox();
+
         public ListReq()
         {
             InitializeComponent();
@@ -21,10 +22,22 @@ namespace Autentificación
 
         private void ListReq_Load(object sender, EventArgs e)
         {
+            CargarComboBox();           
+        }
+
+        private void CargarComboBox()
+        {
+            //llenamos combobox prioridad
             cb_Prioridad.Items.Clear();
             cb_Prioridad.Items.Add("Baja");
             cb_Prioridad.Items.Add("Media");
             cb_Prioridad.Items.Add("Alta");
+
+            //llamamos desde la query de tipo de requerimiento llanamos una lista
+            cb_TipoReq.DataSource = LstReq.ListTipoReq();
+            cb_TipoReq.ValueMember = "Id_Tipo_Req";
+            cb_TipoReq.DisplayMember = "Titulo_de_requerimientos";
+            cb_TipoReq.Text = ("Selecciona tipo de requerimiento");
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -45,10 +58,7 @@ namespace Autentificación
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show("Seliminaron los datos de: " /* + aqui pasar identificador de requerimiento*/ );
-
-            //
+            MessageBox.Show("Se liminaron los datos de: " /* + aqui pasar identificador de requerimiento*/ );
         }
     }
 }

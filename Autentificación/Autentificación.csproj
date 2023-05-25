@@ -59,8 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controladores\Autenticacion.cs" />
-    <Compile Include="controladores\ControlAgregarRequerimiento.cs" />
-    <Compile Include="controladores\ControlLstReq.cs" />
+    <Compile Include="controladores\ConnectionString.cs" />
+    <Compile Include="controladores\ControlGuardarReq.cs" />
+    <Compile Include="controladores\LlenarComboBox.cs" />
+    <Compile Include="controladores\ControlMostrarReq.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +120,9 @@
     <Compile Include="modelos\BD\Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="modelos\ViewModels\RequerimientosModel.cs" />
+    <Compile Include="modelos\ViewModels\RolModel.cs" />
+    <Compile Include="modelos\ViewModels\TipoReqModel.cs" />
     <Compile Include="modelos\ViewModels\UsuarioModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

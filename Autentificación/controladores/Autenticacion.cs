@@ -1,5 +1,5 @@
 ﻿using Autentificación.modelos.BD;
-using Autentificación.modelos.ViewModels;
+using ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,13 +12,12 @@ namespace controladores
 {
     public class Autenticacion
     {
-        //falta insertar base de datos y definir el tu servidor
-        string ConnectionString = "Data Source = (local); Initial Catalog = <Base de datos>; Integrated Security = True";
+        conn cn = new conn();
 
         public bool AutentificasionDeUsuario(string Usuario, string Contrasena)
         {
             string query = "SELECT COUNT(*) FROM UsuarioSet WHERE CorreoElectronico = @Usuario AND Contraseña = @Contrasena";
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(cn.connectionS()))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

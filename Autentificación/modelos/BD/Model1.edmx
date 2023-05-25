@@ -46,7 +46,6 @@
     <Property Name="Id_Requerimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Prioridad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Nivel_Complejidad" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Estado_RequerimientoId_Estado" Type="int" Nullable="false" />
     <Property Name="tipo_de_requerimientoId_Tipo_Req" Type="int" Nullable="false" />
     <Property Name="RolID" Type="int" Nullable="false" />
@@ -64,7 +63,6 @@
     </Key>
     <Property Name="Id_Tipo_Req" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Titulo_de_requerimientos" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Requerimientos_Id_Requerimiento" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RolSet">
     <Key>
@@ -167,7 +165,6 @@
           <Property Name="Id_Requerimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" Nullable="false" />
           <Property Name="Prioridad" Type="String" Nullable="false" />
-          <Property Name="Nivel_Complejidad" Type="String" Nullable="false" />
           <NavigationProperty Name="Estado_Requerimiento" Relationship="Model1.RequerimientosEstado_Requerimiento" FromRole="Requerimientos" ToRole="Estado_Requerimiento" />
           <Property Name="Estado_RequerimientoId_Estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tipo_de_requerimiento" Relationship="Model1.tipo_de_requerimientoRequerimientos" FromRole="Requerimientos" ToRole="tipo_de_requerimiento" />
@@ -189,7 +186,6 @@
           </Key>
           <Property Name="Id_Tipo_Req" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Titulo_de_requerimientos" Type="String" Nullable="false" />
-          <Property Name="Requerimientos_Id_Requerimiento" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Requerimientos" Relationship="Model1.tipo_de_requerimientoRequerimientos" FromRole="tipo_de_requerimiento" ToRole="Requerimientos" />
         </EntityType>
         <Association Name="RequerimientosEstado_Requerimiento">
@@ -273,7 +269,6 @@
           <ScalarProperty Name="Id_Requerimiento" ColumnName="Id_Requerimiento" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
-          <ScalarProperty Name="Nivel_Complejidad" ColumnName="Nivel_Complejidad" />
           <ScalarProperty Name="Estado_RequerimientoId_Estado" ColumnName="Estado_RequerimientoId_Estado" />
           <ScalarProperty Name="tipo_de_requerimientoId_Tipo_Req" ColumnName="tipo_de_requerimientoId_Tipo_Req" />
           <ScalarProperty Name="RolID" ColumnName="RolID" />
@@ -293,7 +288,6 @@
         <MappingFragment StoreEntitySet="tipo_de_requerimientoSet">
           <ScalarProperty Name="Id_Tipo_Req" ColumnName="Id_Tipo_Req" />
           <ScalarProperty Name="Titulo_de_requerimientos" ColumnName="Titulo_de_requerimientos" />
-          <ScalarProperty Name="Requerimientos_Id_Requerimiento" ColumnName="Requerimientos_Id_Requerimiento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

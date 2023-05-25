@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cb_Prioridad = new System.Windows.Forms.ComboBox();
+            this.cb_ = new System.Windows.Forms.ComboBox();
             this.cb_TipoReq = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,20 +36,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_Prioridad = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // cb_Prioridad
+            // cb_
             // 
-            this.cb_Prioridad.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cb_Prioridad.FormattingEnabled = true;
-            this.cb_Prioridad.Location = new System.Drawing.Point(261, 141);
-            this.cb_Prioridad.Name = "cb_Prioridad";
-            this.cb_Prioridad.Size = new System.Drawing.Size(198, 21);
-            this.cb_Prioridad.TabIndex = 12;
-            this.cb_Prioridad.Text = "Asignelo al responsable";
+            this.cb_.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cb_.FormattingEnabled = true;
+            this.cb_.Location = new System.Drawing.Point(261, 141);
+            this.cb_.Name = "cb_";
+            this.cb_.Size = new System.Drawing.Size(198, 21);
+            this.cb_.TabIndex = 12;
+            this.cb_.Text = "Asignelo al responsable";
             // 
             // cb_TipoReq
             // 
@@ -125,48 +125,50 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Prioridad:";
             // 
-            // comboBox1
+            // cb_Prioridad
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(261, 338);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(198, 21);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.Text = "Indique la prioridad del requerimiento";
+            this.cb_Prioridad.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cb_Prioridad.FormattingEnabled = true;
+            this.cb_Prioridad.Location = new System.Drawing.Point(261, 338);
+            this.cb_Prioridad.Name = "cb_Prioridad";
+            this.cb_Prioridad.Size = new System.Drawing.Size(198, 21);
+            this.cb_Prioridad.TabIndex = 16;
+            this.cb_Prioridad.Text = "Indique la prioridad del requerimiento";
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(404, 391);
+            this.button2.Location = new System.Drawing.Point(472, 391);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 37);
             this.button2.TabIndex = 18;
-            this.button2.Text = "Eliminar";
+            this.button2.Text = "Limpiar campos";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(135, 391);
+            this.button1.Location = new System.Drawing.Point(67, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(231, 37);
             this.button1.TabIndex = 17;
-            this.button1.Text = "Marcar como resuelto";
+            this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormAgregarReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 431);
+            this.ClientSize = new System.Drawing.Size(650, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cb_Prioridad);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cb_Prioridad);
+            this.Controls.Add(this.cb_);
             this.Controls.Add(this.cb_TipoReq);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -183,7 +185,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cb_Prioridad;
+        private System.Windows.Forms.ComboBox cb_;
         private System.Windows.Forms.ComboBox cb_TipoReq;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -191,7 +193,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_Prioridad;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }

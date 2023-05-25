@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Autentificación.modelos.ViewModels
+namespace ViewModels
 {
     public class UsuarioModel
     {

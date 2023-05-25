@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/24/2023 12:41:04
+-- Date Created: 05/24/2023 20:35:14
 -- Generated from EDMX file: C:\Users\jpgod\source\repos\Autentificaci-n\Autentificación\modelos\BD\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,17 +17,17 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_UsuarioRequerimientos]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_UsuarioRequerimientos];
-GO
 IF OBJECT_ID(N'[dbo].[FK_RequerimientosEstado_Requerimiento]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_RequerimientosEstado_Requerimiento];
 GO
 IF OBJECT_ID(N'[dbo].[FK_tipo_de_requerimientoRequerimientos]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_tipo_de_requerimientoRequerimientos];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UsuarioEstado_Requerimiento]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Estado_RequerimientoSet] DROP CONSTRAINT [FK_UsuarioEstado_Requerimiento];
+IF OBJECT_ID(N'[dbo].[FK_RolUsuario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UsuarioSet] DROP CONSTRAINT [FK_RolUsuario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RolRequerimientos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RequerimientosSet] DROP CONSTRAINT [FK_RolRequerimientos];
 GO
 
 -- --------------------------------------------------
@@ -45,6 +45,9 @@ IF OBJECT_ID(N'[dbo].[Estado_RequerimientoSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[tipo_de_requerimientoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[tipo_de_requerimientoSet];
+GO
+IF OBJECT_ID(N'[dbo].[RolSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RolSet];
 GO
 
 -- --------------------------------------------------
@@ -67,7 +70,6 @@ CREATE TABLE [dbo].[RequerimientosSet] (
     [Id_Requerimiento] int IDENTITY(1,1) NOT NULL,
     [Descripcion] nvarchar(max)  NOT NULL,
     [Prioridad] nvarchar(max)  NOT NULL,
-    [Nivel_Complejidad] nvarchar(max)  NOT NULL,
     [Estado_RequerimientoId_Estado] int  NOT NULL,
     [tipo_de_requerimientoId_Tipo_Req] int  NOT NULL,
     [RolID] int  NOT NULL
@@ -84,8 +86,7 @@ GO
 -- Creating table 'tipo_de_requerimientoSet'
 CREATE TABLE [dbo].[tipo_de_requerimientoSet] (
     [Id_Tipo_Req] int IDENTITY(1,1) NOT NULL,
-    [Titulo_de_requerimientos] nvarchar(max)  NOT NULL,
-    [Requerimientos_Id_Requerimiento] int  NOT NULL
+    [Titulo_de_requerimientos] nvarchar(max)  NOT NULL
 );
 GO
 
